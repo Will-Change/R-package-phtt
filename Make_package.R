@@ -22,7 +22,7 @@ devtools::install_github("lidom/R-package-phtt", force = TRUE)
 
 ## usethis
 # Run once to configure package to use pkgdown
-usethis::use_pkgdown()
+#usethis::use_pkgdown()
 # Run to build the website
 pkgdown::build_site()
 # 
