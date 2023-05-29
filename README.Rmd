@@ -14,7 +14,7 @@ Download the paper (PDF): [HERE](https://www.jstatsoft.org/index.php/jss/article
 
 ```{r}
 library(devtools)
-install_github("lidom/R-package-phtt/phtt")
+install_github("lidom/phtt")
 ```
 
 ## Citation
