@@ -17,12 +17,17 @@ library(devtools)
 install_github("lidom/R-package-phtt/phtt")
 ```
 
+## Citation
+
+If you use the package, please cite 
+
+Bada, O., & Liebl, D. (2014). phtt: Panel Data Analysis with Heterogeneous Time Trends in R. Journal of Statistical Software, 59(6), 1–33. https://doi.org/10.18637/jss.v059.i06
 
 
 ### R Codes 
 
 
-The following R codes reproduce the Figures of our article: 
+The following R codes reproduce the figures of our article: 
 
 Bada, O., & Liebl, D. (2014). [phtt: Panel Data Analysis with Heterogeneous Time Trends in R](https://www.jstatsoft.org/index.php/jss/article/view/v059i06/768). Journal of Statistical Software, 59(6), 1–33. https://doi.org/10.18637/jss.v059.i06
 
