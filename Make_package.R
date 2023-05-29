@@ -16,7 +16,7 @@ devtools::check()       # check the package
 ## Install
 devtools::install_local("phtt", force = TRUE)
 
-devtools::install_github("lidom/R-package-phtt/", force = TRUE)
+devtools::install_github("lidom/R-package-phtt", force = TRUE)
 ##
 ## #################################
 
