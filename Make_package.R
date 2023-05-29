@@ -11,7 +11,7 @@ remove.packages("phtt")
 devtools::document("phtt")
 
 ## CRAN-check pkg
-devtools::check("phtt")       # check the package
+devtools::check()       # check the package
 
 ## Install
 devtools::install_local("phtt", force = TRUE)
