@@ -180,7 +180,7 @@ restrict.pca <- function(obj
 
   # check the object class and it conformitiy
 
-	if(class(obj) !="svd.pca"&&class(obj)!="fsvd.pca"){stop(c("Argument 
+	if( !inherits(obj, "svd.pca") && !inherits(obj, "fsvd.pca")){stop(c("Argument 
 		has to be either a 'svd.pca' or a 'fsvd.pca' object."))}
 	if(is.null(obj$R)){  stop(c("Loading-parameters are missing."))}
 
@@ -228,7 +228,7 @@ restrict.pca <- function(obj
 
   ## extend list according to the object class (svd.pca or fsvd.pca)
 
-	if(class(obj) == "fsvd.pca"){
+	if(inherits(obj, "fsvd.pca") ){
 		result$orig.values = obj$Q.orig
 		result$orig.values.smth = obj$Q.orig.smth
 		result$spar.low		= obj$spar.low

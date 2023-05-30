@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">phtt</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,28 +54,39 @@
 <div class="page-header"><h1 id="r-package-phtt">R package <code>phtt</code>
 <a class="anchor" aria-label="anchor" href="#r-package-phtt"></a>
 </h1></div>
-<p>This repository contains the R package <code>phtt</code> for estimating panel data models with time varying individual effects.</p>
-<p>The functions in this package are described in</p>
+<p>This repository contains the R package <code>phtt</code> for estimating panel data models that generalize the classical fixed effects models by allow to control for <em>time varying</em> individual fixed effects. A readable introduction to the panel data models, the estimation and the inference procedures of this package are described in</p>
 <p>Bada, O., &amp; Liebl, D. (2014). <a href="https://www.jstatsoft.org/index.php/jss/article/view/v059i06/768" class="external-link">phtt: Panel Data Analysis with Heterogeneous Time Trends in R</a>. Journal of Statistical Software, 59(6), 1–33. <a href="https://doi.org/10.18637/jss.v059.i06" class="external-link uri">https://doi.org/10.18637/jss.v059.i06</a></p>
-<p>Download the paper (PDF): <a href="https://www.jstatsoft.org/index.php/jss/article/view/v059i06/768" class="external-link">HERE</a></p>
+<p>Free Download the paper (PDF): <a href="https://www.jstatsoft.org/index.php/jss/article/view/v059i06/768" class="external-link">HERE</a></p>
+<div class="section level3">
+<h3 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h3>
+<p>The R package <code>phtt</code> contains three main functions.</p>
+<ol style="list-style-type: decimal">
+<li>The <code><a href="reference/Eup.html">Eup()</a></code> function implements the estimation and inference methods of<ul>
+<li>Bai, J. (2009). Panel data models with interactive fixed effects. Econometrica, 77(4), 1229-1279. and the refined estimation version described in</li>
+<li>Bada, O., &amp; Kneip, A. (2014). Parameter cascading for panel models with unknown number of unobserved factors: An application to the credit spread puzzle. Computational Statistics &amp; Data Analysis, 76, 95-115.</li>
+</ul>
+</li>
+<li>The <code><a href="reference/KSS.html">KSS()</a></code> function implements the estimation and inference methods of<ul><li>Kneip, A., Sickles, R. C., &amp; Song, W. (2012). A new panel data treatment for heterogeneity in time trends. Econometric theory, 28(3), 590-628.</li></ul>
+</li>
+<li>The <code><a href="reference/OptDim.html">OptDim()</a></code> function contains the implementations of many different procedure for estimating the dimension of the unobserved factor structure.</li>
+</ol>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <pre class="{r}"><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"lidom/R-package-phtt"</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre>
-</div>
-<div class="section level2">
-<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h2>
-<p>If you use the package, please cite</p>
-<p>Bada, O., &amp; Liebl, D. (2014). phtt: Panel Data Analysis with Heterogeneous Time Trends in R. Journal of Statistical Software, 59(6), 1–33. <a href="https://doi.org/10.18637/jss.v059.i06" class="external-link uri">https://doi.org/10.18637/jss.v059.i06</a></p>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"lidom/R-package-phtt"</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"phtt"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"phtt"</span><span class="op">)</span></code></pre>
 <div class="section level3">
 <h3 id="r-codes">R Codes<a class="anchor" aria-label="anchor" href="#r-codes"></a>
 </h3>
 <p>The following R codes reproduce the figures of our article:</p>
 <p>Bada, O., &amp; Liebl, D. (2014). <a href="https://www.jstatsoft.org/index.php/jss/article/view/v059i06/768" class="external-link">phtt: Panel Data Analysis with Heterogeneous Time Trends in R</a>. Journal of Statistical Software, 59(6), 1–33. <a href="https://doi.org/10.18637/jss.v059.i06" class="external-link uri">https://doi.org/10.18637/jss.v059.i06</a></p>
 <pre class="{r}"><code><span class="co">## Load package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://www.dliebl.com/R-package-phtt/">"phtt"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"phtt"</span><span class="op">)</span>
 
 <span class="co">## Load Data</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Cigar"</span>, package <span class="op">=</span> <span class="st">"phtt"</span><span class="op">)</span>
@@ -90,7 +101,9 @@
 <span class="co">## Real Disposable Income per Capita</span>
 <span class="va">l.Income</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">Cigar</span><span class="op">$</span><span class="va">ndi</span>, <span class="cn">T</span>, <span class="va">n</span><span class="op">)</span><span class="op">/</span><span class="va">cpi</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Figure 1:</span>
+<span class="co">## ##############################################################</span>
 <span class="va">scl</span> <span class="op">&lt;-</span> <span class="fl">1.6</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2.1</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">l.Consumption</span>, type <span class="op">=</span> <span class="st">"l"</span>, main <span class="op">=</span> <span class="st">"Log's of\nCigar-Consumption"</span>, ylab <span class="op">=</span> <span class="st">""</span>, 
@@ -100,15 +113,17 @@
 <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">l.Income</span>, type <span class="op">=</span> <span class="st">"l"</span>, main <span class="op">=</span> <span class="st">"Log's of\nreal Income"</span>, ylab <span class="op">=</span> <span class="st">""</span>, xlab <span class="op">=</span> <span class="st">"Time"</span>, 
   cex.main <span class="op">=</span> <span class="va">scl</span>, cex.lab <span class="op">=</span> <span class="va">scl</span>, cex.axis <span class="op">=</span> <span class="va">scl</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">graphics.off</a></span><span class="op">(</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Estimation of the KSS model</span>
+<span class="co">## ##############################################################</span>
 <span class="va">Cigar.KSS</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/KSS.html">KSS</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">l.Consumption</span> <span class="op">~</span> <span class="va">l.Price</span> <span class="op">+</span> <span class="va">l.Income</span><span class="op">)</span>
 <span class="op">(</span><span class="va">Cigar.KSS.summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Cigar.KSS</span><span class="op">)</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Figure 2:</span>
+<span class="co">## ##############################################################</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Cigar.KSS.summary</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">graphics.off</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co">## Estimation of the number of factors</span>
 <span class="fu"><a href="reference/OptDim.html">OptDim</a></span><span class="op">(</span>Obj <span class="op">=</span> <span class="va">l.Consumption</span>, criteria <span class="op">=</span> <span class="st">"PC1"</span><span class="op">)</span>
@@ -116,49 +131,59 @@
 <span class="op">(</span><span class="va">OptDim.obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/OptDim.html">OptDim</a></span><span class="op">(</span>Obj <span class="op">=</span> <span class="va">l.Consumption</span>, criteria <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PC3"</span>, <span class="st">"ER"</span>, <span class="st">"GR"</span>, <span class="st">"IPC1"</span>, 
   <span class="st">"IPC2"</span>, <span class="st">"IPC3"</span><span class="op">)</span>, standardize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Figure 3:</span>
+<span class="co">## ##############################################################</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">OptDim.obj</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">graphics.off</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co">## This is for interactive use.</span>
 <span class="co">## KSS(formula = l.Consumption ~ -1 + l.Price + l.Income, consult.dim = TRUE)</span>
 
 <span class="co">## First differences of the data:</span>
 <span class="va">d.l.Consumption</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="va">l.Consumption</span><span class="op">)</span>
-<span class="va">d.l.Price</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="va">l.Price</span><span class="op">)</span>
-<span class="va">d.l.Income</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="va">l.Income</span><span class="op">)</span>
+<span class="va">d.l.Price</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="va">l.Price</span><span class="op">)</span>
+<span class="va">d.l.Income</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="va">l.Income</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Estimation of the EUP model</span>
+<span class="co">## ##############################################################</span>
 <span class="op">(</span><span class="va">Cigar.Eup</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Eup.html">Eup</a></span><span class="op">(</span><span class="va">d.l.Consumption</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">d.l.Price</span> <span class="op">+</span> <span class="va">d.l.Income</span>, dim.criterion <span class="op">=</span> <span class="st">"PC3"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Cigar.Eup</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Figure 4:</span>
+<span class="co">## ##############################################################</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Cigar.Eup</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">graphics.off</a></span><span class="op">(</span><span class="op">)</span>
 
+
+<span class="co">## ##############################################################</span>
 <span class="co">## Estimation of the KSS model with additive individual effects</span>
+<span class="co">## ##############################################################</span>
 <span class="va">Cigar2.KSS</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/KSS.html">KSS</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">l.Consumption</span> <span class="op">~</span> <span class="va">l.Price</span> <span class="op">+</span> <span class="va">l.Income</span>, additive.effects <span class="op">=</span> <span class="st">"individual"</span><span class="op">)</span>
 <span class="op">(</span><span class="va">Cigar2.KSS.summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">)</span>
 
+<span class="co">## ##############################################################</span>
 <span class="co">## Figure 5:</span>
+<span class="co">## ##############################################################</span>
 <span class="va">scl</span> <span class="op">&lt;-</span> <span class="fl">1.75</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2.1</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Cigar2.KSS.summary</span>, cex.main <span class="op">=</span> <span class="fl">1.25</span>, cex.lab <span class="op">=</span> <span class="va">scl</span>, cex.axis <span class="op">=</span> <span class="va">scl</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">graphics.off</a></span><span class="op">(</span><span class="op">)</span>
 
+
+<span class="co">## ##############################################################</span>
 <span class="co">## Testing for model specification</span>
-<span class="va">twoways.obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Eup.html">Eup</a></span><span class="op">(</span><span class="va">d.l.Consumption</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">d.l.Price</span> <span class="op">+</span> <span class="va">d.l.Income</span>, factor.dim <span class="op">=</span> <span class="fl">0</span>, 
+<span class="co">## ##############################################################</span>
+<span class="va">twoways.obj</span>     <span class="op">&lt;-</span> <span class="fu"><a href="reference/Eup.html">Eup</a></span><span class="op">(</span><span class="va">d.l.Consumption</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">d.l.Price</span> <span class="op">+</span> <span class="va">d.l.Income</span>, factor.dim <span class="op">=</span> <span class="fl">0</span>, 
   additive.effects <span class="op">=</span> <span class="st">"twoways"</span><span class="op">)</span>
 <span class="va">not.twoways.obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Eup.html">Eup</a></span><span class="op">(</span><span class="va">d.l.Consumption</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">d.l.Price</span> <span class="op">+</span> <span class="va">d.l.Income</span>, factor.dim <span class="op">=</span> <span class="fl">2</span>, 
   additive.effects <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="reference/checkSpecif.html">checkSpecif</a></span><span class="op">(</span>obj1 <span class="op">=</span> <span class="va">twoways.obj</span>, obj2 <span class="op">=</span> <span class="va">not.twoways.obj</span>, level <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co">## </span>
+
 <span class="va">Eup.obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Eup.html">Eup</a></span><span class="op">(</span><span class="va">d.l.Consumption</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">d.l.Price</span> <span class="op">+</span> <span class="va">d.l.Income</span>, additive.effects <span class="op">=</span> <span class="st">"twoways"</span><span class="op">)</span>
 <span class="fu"><a href="reference/checkSpecif.html">checkSpecif</a></span><span class="op">(</span><span class="va">Eup.obj</span>, level <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>
 
-<span class="co">## </span>
 <span class="va">KSS.obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/KSS.html">KSS</a></span><span class="op">(</span><span class="va">l.Consumption</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">l.Price</span> <span class="op">+</span> <span class="va">l.Income</span>, additive.effects <span class="op">=</span> <span class="st">"twoways"</span><span class="op">)</span>
 <span class="fu"><a href="reference/checkSpecif.html">checkSpecif</a></span><span class="op">(</span><span class="va">KSS.obj</span>, level <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>
 
@@ -168,9 +193,11 @@
 <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Var.shares.of.loadings.param</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Var.shares.of.loadings.param</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Var.shares.of.loadings.param</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span>
-<span class="co">## </span>
 
+
+<span class="co">## ##############################################################</span>
 <span class="co">## Figure 6:</span>
+<span class="co">## ##############################################################</span>
 <span class="va">scl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Common.factors</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Ind.loadings.param</span><span class="op">[</span>, 
@@ -179,8 +206,7 @@
 <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Common.factors</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Cigar2.KSS</span><span class="op">)</span><span class="op">$</span><span class="va">Ind.loadings.param</span><span class="op">[</span>, 
   <span class="fl">2</span><span class="op">]</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, main <span class="op">=</span> <span class="st">"Variance of time-varying indiv. effects\n in direction of the 2. common factor"</span>, 
   xlab <span class="op">=</span> <span class="st">"Time"</span>, ylab <span class="op">=</span> <span class="st">""</span>, cex.main <span class="op">=</span> <span class="va">scl</span>, cex.lab <span class="op">=</span> <span class="va">scl</span>, cex.axis <span class="op">=</span> <span class="va">scl</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">graphics.off</a></span><span class="op">(</span><span class="op">)</span></code></pre>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -209,7 +235,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Dominik Liebl <br><small class="roles"> Maintainer </small>  </li>
+<li>Dominik Liebl <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Oualid Bada <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
@@ -221,7 +248,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Dominik Liebl.</p>
+<p>Developed by Dominik Liebl, Oualid Bada.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -8,7 +8,7 @@
 remove.packages("phtt")
 
 ## Create/update documentation and (re-)write NAMESPACE
-devtools::document("phtt")
+devtools::document()
 
 ## CRAN-check pkg
 devtools::check()       # check the package

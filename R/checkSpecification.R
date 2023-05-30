@@ -24,7 +24,7 @@ checkSpecif <- function(obj1, obj2, level = 0.05){
   ## ==================================================================================
   ## effects
   if(!test.int){
-    if(class(obj1)!="Eup" & !class(obj2)!="Eup"){
+    if( !inherits(obj1, "Eup") & !inherits(obj2, "Eup") ){
       stop("\n >>obj1<< and >>obj2<< have to be Eup-objects.")
     }
     testname <- "Hausman type test as proposed by Bai (2009)"
@@ -71,14 +71,14 @@ checkSpecif <- function(obj1, obj2, level = 0.05){
                      crit.value = round(crit.value, 2), sig.level = round(level, 2))
     result$print <- additive.effects
   }else{
-    if(class(obj1)=="Eup"){
+    if( inherits(obj1, "Eup") ){
       testname     <- "Test of Kneip, Sickles, and Song (2012)"
       obj          <- Eup(formula=obj1$formula, additive.effects=obj1$additive.effects, factor.dim=0)
       resObj       <- obj$unob.fact.stru + obj$residuals
       fsvd.pca.obj <- fsvd.pca(resObj, spar = 0)
       result       <- KSS.OptDim(fsvd.pca.obj, criteria = c("KSS.C"), alpha    = level)[[2]]
     }
-    if(class(obj1)=="KSS"){
+    if( inherits(obj1, "KSS") ){
       testname     <- "Test of Kneip, Sickles, and Song (2012)"
       obj          <- KSS(formula=obj1$formula, additive.effects=obj1$additive.effects, factor.dim=0)
       resObj       <- obj$unob.fact.stru + obj$residuals

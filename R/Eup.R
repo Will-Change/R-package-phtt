@@ -271,7 +271,7 @@ Eup.default <- function(formula,
 
   # check fomula
 
-	if(!class(formula)=="formula"){
+	if(!any(class(formula)=="formula")){
 		stop("\n Argument >>formula<< needs a formula-object like 
 					y~x1+... where the elements are matrices")
 	}
