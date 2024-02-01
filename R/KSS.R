@@ -120,10 +120,17 @@ KSS.default <- function(formula,
     ## common-Slope.Coefficients:
     inv.bloc1 <- solve(bloc1)
     # Using Lasso regression from glmnet package
-    ###lasso_fit <- glmnet(as.matrix(TR.X), TR.Y, alpha = 1) # alpha = 1 for Lasso
-    ###best_lambda <- lasso_fit$lambda.min # Selecting the best lambda
-    ###com.slops.0 <- predict(lasso_fit, s = best_lambda) # Lasso coefficients
-    com.slops.0      <- inv.bloc1%*%bloc2				       # (Px1)
+    lasso_fit <- glmnet(as.matrix(TR.X), TR.Y, alpha = 1, intercept = FALSE) # alpha = 1 for Lasso
+    best_lambda <- lasso_fit$lambda.min # Selecting the best lambda
+    lasso_coefs <- coef(lasso_fit, s = best_lambda)
+
+    # Convert to a vector and check dimensions
+    com.slops.0 <- as.vector(lasso_coefs[-1, 1])
+    
+    #lasso_fit <- glmnet(as.matrix(TR.X), TR.Y, alpha = 1) # alpha = 1 for Lasso
+    #best_lambda <- lasso_fit$lambda.min # Selecting the best lambda
+    #com.slops.0 <- coef(lasso_fit, s = best_lambda) # Lasso coefficients
+    ## com.slops.0      <- inv.bloc1%*%bloc2				       # (Px1)
     ## calculate first step residuals and estimate dimension of factor-structure
     Residu.mat       <- matrix((TR.Y - (TR.X %*% com.slops.0)), T, N)
 
@@ -132,15 +139,15 @@ KSS.default <- function(formula,
 
     # Functional PCA with Shrinkage
     # 1. Calculate the covariance matrix of residuals
-    ## residual_cov <- cov(Residu.mat)
+    #residual_cov <- cov(Residu.mat)
 
     # 2. Apply shrinkage to the covariance matrix
-    ##shrinkage_cov <- cov.shrink(residual_cov)
+    #shrinkage_cov <- cov.shrink(residual_cov)
 
     # 3. Perform PCA on the shrunken covariance matrix
     # We might need to replace fpca.fit with a function that accepts a covariance matrix
     # or implement PCA manually if fpca.fit does not support covariance matrices
-    ##fpca.fit.obj <- fpca.fit(shrinkage_cov, spar = spar.low)
+    #fpca.fit.obj <- fpca.fit(shrinkage_cov, spar = spar.low)
                             
     ## Estimation of Dimension
     dim.criterion    <- c("PC1", "PC2", "PC3", "BIC3","IC1", "IC2", "IC3",
@@ -215,7 +222,15 @@ KSS.default <- function(formula,
     if(used.dim > 0){
       factors       <- fpca.fit.obj$factors[,  1:used.dim, drop= FALSE]
       loadings      <- fpca.fit.obj$loadings[, 1:used.dim, drop= FALSE]
+      # Debugging: Check dimensions
+      cat("Dimensions of factors:", dim(factors), "\n")
+      cat("Dimensions of loadings:", dim(loadings), "\n")
+      cat("Dimensions of TR.Y.mat:", dim(TR.Y.mat), "\n") # Gives N and T
       factor.stract <- tcrossprod(factors, loadings)
+
+      # Check if the dimensions match
+      cat("Dimensions of factor.stract:", dim(factor.stract), "\n")
+      #factor.stract <- tcrossprod(factors, loadings)
       ## Eventually for later extensions: logical argument two.step in order
       ## to allow for a conditional estimation of the slope-parameters given
       ## the estimated dimension d. 

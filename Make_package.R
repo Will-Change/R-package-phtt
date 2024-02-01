@@ -32,6 +32,7 @@ pkgdown::build_site()
 
 data(Cigar)
 ## Panel-Dimensions:
+print(dim(Cigar))
 N <- 46
 T <- 30
 ## Dependent variable:
@@ -46,4 +47,6 @@ l.Price  <- log(matrix(Cigar$price, T,N)/cpi)
 l.Income    <- log(matrix(Cigar$ndi,   T,N)/cpi)
 
 ## Estimation:
-KSS.fit      <- KSS(l.Consumption~l.Price+l.Income, CV=TRUE)
+KSS.fit <- KSS(l.Consumption ~ l.Price + l.Income, CV = TRUE)
+KSS.summary <- summary(KSS.fit)
+print(KSS.summary)
