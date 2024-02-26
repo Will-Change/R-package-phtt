@@ -15,6 +15,10 @@ KSS <- function(formula,
   UseMethod("KSS")
 }
 
+softThreshold <- function(z, gamma) {
+   sign(z) * pmax(0, abs(z) - gamma)
+}
+
 print.KSS <- function(x,...){
    cat("Call:\n")
    print(x$call)
