@@ -27,6 +27,8 @@ fsvd.pca <- function(Q,
   
   ## Compute spectral decompostion
   cov.mat         <- tcrossprod(Q)
+  regularization_matrix <- diag(0.02, nrow(cov.mat))  # Adjusted to match cov.mat dimensions
+  cov.mat <- cov.mat + regularization_matrix
   Spdec           <- eigen(cov.mat, symmetric= TRUE)
   Eval	          <- Spdec[[1]]
   Evec    	  <- Spdec[[2]]

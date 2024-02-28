@@ -90,7 +90,7 @@ summary.KSS <- function(object,...){
   yy <- sum(diag(crossprod(object$orig.Y - mean(object$orig.Y))))
   ee <- sum(diag(crossprod(object$residuals)))
   R2  <- 1 - ee/yy
-  ## R2a <- 1 - (ee/object$degrees.of.freedom)/(yy - 1)
+  R2a <- 1 - (ee/object$degrees.of.freedom)/(yy - 1)
   
   ## Add-Effect-Type:
   eff              <- matrix(object$additive.effects)
@@ -152,7 +152,7 @@ print.summary.KSS <- function(x, ...){
   cat("\nResidual standard error:",             signif(x$KSS.obj$sig2.hat, digits=3), "on", 
                                                 x$KSS.obj$degrees.of.freedom, "degrees of freedom \n")
   cat("R-squared:",                    signif(x$R2,digits=3),"\n")
-#  cat("Adjusted R-squared:",                    signif(x$R2,digits=3),"\n")
+  ##cat("Adjusted R-squared:",                    signif(x$R2a,digits=3),"\n")
 }
 
 

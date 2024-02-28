@@ -255,33 +255,39 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Progress: CV-Optimization is running.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> .........</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  CV-Optimization converged.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dimensions of factors: 30 6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dimensions of loadings: 46 6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "my calcs: \n"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "the one we thing is good \n"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2594945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  0.1614381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimensions of factors: 30 30 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimensions of loadings: 46 30 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimensions of TR.Y.mat: 30 46 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimensions of factor.stract: 30 46 </span>
 <span class="r-in"><span><span class="op">(</span><span class="va">KSS.fit.sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">KSS.fit</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> KSS.default(formula = l.Consumption ~ l.Price + l.Income, CV = TRUE)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Residuals:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min     1Q Median     3Q    Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.12  -0.01   0.00   0.01   0.13 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.06  -0.01   0.00   0.01   0.09 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Slope-Coefficients:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate StdErr z.value Pr(&gt;z)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   4.7900 0.1850    25.9 &lt;2e-16 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> l.Price       0.0000 0.0232     0.0      1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> l.Income      0.0000 0.0400     0.0      1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate StdErr z.value Pr(&gt;z)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)    4.030    NaN     NaN    NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> l.Price       -0.259    NaN     NaN    NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> l.Income       0.161    NaN     NaN    NaN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Additive Effects Type:  none  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Used Dimension of the Unobserved Factors: 6  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Used Dimension of the Unobserved Factors: 30  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual standard error: 0.000852 on 921 degrees of freedom </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R-squared: 0.989 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual standard error: -0.000275 on -903 degrees of freedom </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R-squared: 0.996 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">KSS.fit.sum</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="KSS-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>

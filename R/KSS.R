@@ -126,11 +126,15 @@ KSS.default <- function(formula,
 
     # Convert to a vector and check dimensions
     com.slops.0 <- as.vector(lasso_coefs[-1, 1])
-    
+    print("my calcs: \n")
+    print(com.slops.0)
     #lasso_fit <- glmnet(as.matrix(TR.X), TR.Y, alpha = 1) # alpha = 1 for Lasso
     #best_lambda <- lasso_fit$lambda.min # Selecting the best lambda
     #com.slops.0 <- coef(lasso_fit, s = best_lambda) # Lasso coefficients
-    ## com.slops.0      <- inv.bloc1%*%bloc2				       # (Px1)
+    com.slops.0      <- inv.bloc1%*%bloc2
+    print("the one we thing is good \n")
+    print(com.slops.0)    # (Px1)
+
     ## calculate first step residuals and estimate dimension of factor-structure
     Residu.mat       <- matrix((TR.Y - (TR.X %*% com.slops.0)), T, N)
 

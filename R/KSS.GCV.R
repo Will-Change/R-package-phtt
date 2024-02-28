@@ -11,6 +11,18 @@ FUN.iterate.GCV <- function(TR.Y.mat, TR.X.mat, N, T, P){
 	FUN.ols.beta <- function(updated.y, x, inv.xx.x){
 		beta <- tcrossprod(inv.xx.x, t(updated.y))
 		}
+	FUN.lasso.beta <- function(updated.y, x) {
+		# Fit Lasso model; note glmnet takes y as a vector and x as a matrix
+		lasso.model <- glmnet(x, updated.y, alpha = 1)
+	    
+	    	# Use cross-validation to find optimal lambda
+	    	cv.lasso <- cv.glmnet(x, updated.y, alpha = 1)
+	        best.lambda <- cv.lasso$lambda.min
+	        
+	        # Extract coefficients at best lambda
+	        beta <- as.matrix(coef(lasso.model, s = best.lambda)[-1, , drop = FALSE]) # Dropping intercept
+		return(beta)
+	}
 
 
   ## Starting values 		
@@ -46,7 +58,7 @@ FUN.iterate.GCV <- function(TR.Y.mat, TR.X.mat, N, T, P){
 		y.updated.1 <- y -  c(y.fitted.0)
 
   	## beta.1: OLS.1 computation for the computed fs.0 in interation 0 
-		beta.1 <- FUN.ols.beta(y.updated.1, x, inv.xx.x) 
+		beta.1 <- FUN.lasso.beta(y.updated.1, x) 
 
   	## convergence condition
 		if(all( abs((beta.0 - beta.1)) < 1e-3)| i  == 100){

@@ -36,5 +36,5 @@ importFrom("stats", "coef", "cor", "lm", "lm.fit", "median",
                "model.frame", "model.matrix", "model.response", "optimize",
                "pchisq", "plot.ts", "pnorm", "printCoefmat", "qchisq",
                "qnorm", "residuals", "var")
-importFrom("glmnet", "glmnet")
+importFrom("glmnet", "glmnet", "cv.glmnet")
 importFrom("corpcor", "cov.shrink")
