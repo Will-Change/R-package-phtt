@@ -26,12 +26,29 @@ fsvd.pca <- function(Q,
   }
   
   ## Compute spectral decompostion
-  cov.mat         <- tcrossprod(Q)
-  regularization_matrix <- diag(0.02, nrow(cov.mat))  # Adjusted to match cov.mat dimensions
+  ## Compute spectral decomposition
+  cov.mat <- tcrossprod(Q)
+
+  # Banding regularization
+  bandwidth <- 2  # Example bandwidth
+  n <- nrow(cov.mat)
+  reg_matrix <- matrix(0, n, n)  # Initialize regularization matrix
+  for (i in 1:n) {
+	  lower <- max(1, i - bandwidth)
+	  upper <- min(n, i + bandwidth)
+	  reg_matrix[lower:upper, i] <- 1
+	  reg_matrix[i, lower:upper] <- 1
+  }
+  cov.mat <- cov.mat * reg_matrix  # Apply banding
+
+  # Regularization matrix
+  regularization_matrix <- diag(0.02, nrow(cov.mat))
   cov.mat <- cov.mat + regularization_matrix
-  Spdec           <- eigen(cov.mat, symmetric= TRUE)
-  Eval	          <- Spdec[[1]]
-  Evec    	  <- Spdec[[2]]
+
+  # Spectral decomposition
+  Spdec <- eigen(cov.mat, symmetric = TRUE)
+  Eval <- Spdec[[1]]
+  Evec <- Spdec[[2]]
 
   ## Compare rank and given.d
   

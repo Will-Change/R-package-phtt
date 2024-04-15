@@ -4,6 +4,7 @@ FUN.iterate.GCV <- function(TR.Y.mat, TR.X.mat, N, T, P){
 	t.seq <- seq(0, 1, length.out = T)
 
 	xx         <- crossprod(x)                               # (p x p)
+	L <- max(eigen(xx)$values) / N * T                        # Lipschitz constant
 	inv.xx     <- solve(xx)                                  # (p x p)
 	inv.xx.x   <- inv.xx %*% t(x)                            # (p x TN)
 
