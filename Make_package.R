@@ -5,7 +5,7 @@
 ## ################################
 
 ## Remove pkg
-remove.packages("phtt")
+#remove.packages("phtt")
 
 ## Create/update documentation and (re-)write NAMESPACE
 devtools::document()
